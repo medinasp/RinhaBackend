@@ -1,0 +1,78 @@
+version: '3.8'
+services:
+  api1: &app
+    build: .
+    hostname: api1
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=Host=rinha-db;Port=5432;Database=rinha;Username=postgres;Password=root;Pooling=true;Minimum Pool Size=10;Maximum Pool Size=100
+    depends_on:
+      rinha-db:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: '256M'
+    networks:
+     - rinhabackend
+    # ADICIONE ESTA LINHA - Delay para api1 iniciar primeiro
+    command: sh -c "sleep 5 && dotnet RinhaBackend.dll"
+
+  api2:
+    <<: *app
+    hostname: api2
+    networks:
+     - rinhabackend
+    # ADICIONE ESTA LINHA - Delay maior para api2
+    command: sh -c "sleep 10 && dotnet RinhaBackend.dll"
+
+  rinha-db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: rinha
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    command: >
+      postgres 
+      -c max_connections=256
+      -c shared_buffers=128MB
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 2s
+      timeout: 3s
+      retries: 20
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          cpus: '0.75'
+          memory: '1GB'
+    networks:
+     - rinhabackend
+
+  nginx:
+    image: nginx:alpine
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - api1
+      - api2
+    ports:
+      - "9999:9999"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: '128M'
+    networks:
+     - rinhabackend
+
+networks:
+  rinhabackend:
+    driver: bridge
+
+volumes:
+  postgres_data:
