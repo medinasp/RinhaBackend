@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/usuario/1a/projects/rinhaBackend/rinhaBackend.csproj": {}
+    "/home/usuario/1a/projects/rinha/rinhaBackend/rinhaBackend.csproj": {}
   },
   "projects": {
-    "/home/usuario/1a/projects/rinhaBackend/rinhaBackend.csproj": {
+    "/home/usuario/1a/projects/rinha/rinhaBackend/rinhaBackend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/usuario/1a/projects/rinhaBackend/rinhaBackend.csproj",
+        "projectUniqueName": "/home/usuario/1a/projects/rinha/rinhaBackend/rinhaBackend.csproj",
         "projectName": "rinhaBackend",
-        "projectPath": "/home/usuario/1a/projects/rinhaBackend/rinhaBackend.csproj",
+        "projectPath": "/home/usuario/1a/projects/rinha/rinhaBackend/rinhaBackend.csproj",
         "packagesPath": "/home/usuario/.nuget/packages/",
-        "outputPath": "/home/usuario/1a/projects/rinhaBackend/obj/",
+        "outputPath": "/home/usuario/1a/projects/rinha/rinhaBackend/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/usuario/.nuget/NuGet/NuGet.Config"
