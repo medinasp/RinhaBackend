@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wApiJu6wN90=",
+  "dgSpecHash": "W21Q/eiyfIg=",
   "success": true,
-  "projectFilePath": "/home/usuario/1a/projects/rinhaBackend/rinhaBackend.csproj",
+  "projectFilePath": "/home/usuario/1a/projects/rinha/rinhaBackend/rinhaBackend.csproj",
   "expectedPackageFiles": [
     "/home/usuario/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/home/usuario/.nuget/packages/microsoft.aspnetcore.openapi/10.0.1/microsoft.aspnetcore.openapi.10.0.1.nupkg.sha512",
